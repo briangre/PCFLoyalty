@@ -1,0 +1,71 @@
+﻿  Restore completed in 1.08 sec for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\PCFLoyaltyLevels.pcfproj.
+  Restore completed in 1.08 sec for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\PowerAppsTools_bgsample\PowerAppsTools_bgsample.cdsproj.
+  
+  > pcf-project@1.0.0 clean C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty
+  > pcf-scripts clean "--noColor" "--buildMode" "development" "--outDir" "C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
+  
+  [16:52:25] [clean]  Initializing...
+  [16:52:25] [clean]  Cleaning build outputs...
+  [16:52:25] [clean]  Succeeded
+  Cleaning output directory: bin\Debug\, Intermediate directory: obj\Debug\ and Solution Packager working directory: obj\Debug\
+  Removing log file: bin\Debug\SolutionPackager.log and generated solution package: bin\Debug\PowerAppsTools_bgsample.zip
+  
+  > pcf-project@1.0.0 build C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty
+  > pcf-scripts build "--noColor" "--buildMode" "development" "--outDir" "C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
+  
+  [16:52:27] [build]  Initializing...
+  [16:52:27] [build]  Validating manifest...
+  [16:52:27] [build]  Validating control...
+  [16:52:29] [build]  Generating manifest types...
+  [16:52:29] [build]  Compiling and bundling control...
+  [BABEL] Note: The code generator has deoptimised the styling of C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\node_modules\react-dom\cjs\react-dom.development.js as it exceeds the max of 500KB.
+  [Webpack stats]:
+  Hash: 2df9e74ddc14f31f38f1
+  Version: webpack 4.28.4
+  Time: 4151ms
+  Built at: 04/17/2020 4:52:33 PM
+      Asset     Size  Chunks             Chunk Names
+  bundle.js  786 KiB    main  [emitted]  main
+  Entrypoint main = bundle.js
+  [./LoyaltyLevel/LoyaltyLevels.tsx] 3.83 KiB {main} [built]
+  [./LoyaltyLevel/index.ts] 3.32 KiB {main} [built]
+  [./node_modules/object-assign/index.js] 2.17 KiB {main} [built]
+  [./node_modules/prop-types/checkPropTypes.js] 3.57 KiB {main} [built]
+  [./node_modules/prop-types/lib/ReactPropTypesSecret.js] 311 bytes {main} [built]
+  [./node_modules/react-dom/cjs/react-dom.development.js] 647 KiB {main} [built]
+  [./node_modules/react-dom/index.js] 1.32 KiB {main} [built]
+  [./node_modules/react/cjs/react.development.js] 68.6 KiB {main} [built]
+  [./node_modules/react/index.js] 189 bytes {main} [built]
+  [./node_modules/scheduler/cjs/scheduler-tracing.development.js] 11.5 KiB {main} [built]
+  [./node_modules/scheduler/cjs/scheduler.development.js] 25.7 KiB {main} [built]
+  [./node_modules/scheduler/index.js] 197 bytes {main} [built]
+  [./node_modules/scheduler/tracing.js] 213 bytes {main} [built]
+  [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 475 bytes {main} [built]
+  [16:52:33] [build]  Generating build outputs...
+  [16:52:33] [build]  Succeeded
+  Running Solution Packager to build package type: Unmanaged bin\Debug\PowerAppsTools_bgsample.zip
+  SolutionPackger CRM Solution Packaging Tool [Version 9.1.0.44]
+  c 2017 Microsoft Corporation.  All rights reserved
+  
+  
+  Packing C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\PowerAppsTools_bgsample\obj\Debug\Metadata to bin\Debug\PowerAppsTools_bgsample.zip
+  
+  Processing Component: Entities
+  Processing Component: Roles
+  Processing Component: Workflows
+  Processing Component: FieldSecurityProfiles
+  Processing Component: Templates
+  Processing Component: EntityMaps
+  Processing Component: EntityRelationships
+  Processing Component: OrganizationSettings
+  Processing Component: optionsets
+  Processing Component: CustomControls
+   - MicrosoftSamples.LoyaltyLevel
+  Processing Component: SolutionPluginAssemblies
+  Processing Component: EntityDataProviders
+  
+  Unmanaged Pack complete.
+  
+  Solution: bin\Debug\PowerAppsTools_bgsample.zip generated.
+  Solution Package Type: Unmanaged generated.
+  Completed intermiediate files clean up.

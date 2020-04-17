@@ -5,8 +5,8 @@ import * as React from 'react';
 export interface ILoyaltyProps {
     currentValue?: number | null;
     allOptions?: ComponentFramework.PropertyHelper.OptionMetadata[];
-    // optionValueChanged?: (newValue: number) => void;
-    optionValueChanged?: ()=> void;
+    optionValueChanged?: (newValue: number) => void;
+    // optionValueChanged?: ()=> void;
     _context?: ComponentFramework.Context<IInputs>
 }
 
@@ -14,16 +14,16 @@ export interface ILoyaltyState extends React.ComponentState, ILoyaltyProps {
     imageUrl?: string
 }
 
-// export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
-    export class Loyalty extends React.Component<ILoyaltyProps, {}> {
+export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
+    // export class Loyalty extends React.Component<ILoyaltyProps, {}> {
 
-    /* constructor(props:ILoyaltyProps){
+    constructor(props:ILoyaltyProps){
         super(props);
         this.state = {
             value: Number(props.currentValue),
             imageUrl:''
         };
-    } */
+    }
 
     private _imageUrl: string | undefined;
 
@@ -54,7 +54,8 @@ export interface ILoyaltyState extends React.ComponentState, ILoyaltyProps {
         return (
             <div>
                 <h1>{this.props.currentValue}</h1>
-                <img src={this._imageUrl} />
+                {/* <img src={this._imageUrl} /> */}
+                <img src={this.state.imageUrl} />
             </div>
         );
     }
@@ -65,17 +66,20 @@ export interface ILoyaltyState extends React.ComponentState, ILoyaltyProps {
         fileContent: string
     ): void {
         // console.log("entering setImage");
-        // this.setState({imageUrl: this.generateImageSrcUrl(fileType, fileContent)});
+        this.setState({imageUrl: this.generateImageSrcUrl(fileType, fileContent)});
         
-        this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
-        if(this.props.optionValueChanged){
+        // this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
+
+        // below was just a lame attempt at forcing a call to notifyOutput()
+/*         if(this.props.optionValueChanged){
             this.props.optionValueChanged();
         };
-        /* if(shouldUpdateOutput){
+ */        
+        if(shouldUpdateOutput){
             if(this.props.optionValueChanged){
                 this.props.optionValueChanged(Number(this.props.currentValue));
             };
-        } */
+        }
     }
 
     private generateImageSrcUrl(fileType: string, fileContent: string): string {

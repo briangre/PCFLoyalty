@@ -10,6 +10,7 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	private _context: ComponentFramework.Context<IInputs>;
 	
 	private props: ILoyaltyProps = {
+		// optionValueChanged: this.optionValueChanged.bind(this),
 		optionValueChanged: this.optionValueChanged.bind(this),
 		_context: this._context
 	};
@@ -57,7 +58,7 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 			
 	}
 
-	private optionValueChanged(): void{
+	private optionValueChanged(newValue: number): void{
 		// if(this.props.currentValue !== newValue){
 			// this.props.currentValue = newValue;
 			this._notifyOutputChanged();

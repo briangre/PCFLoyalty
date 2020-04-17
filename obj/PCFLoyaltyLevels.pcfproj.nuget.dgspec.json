@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj": {}
+  },
+  "projects": {
+    "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj",
+        "projectName": "PCFLoyaltyLevels",
+        "projectPath": "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj",
+        "packagesPath": "C:\\Users\\briangre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\briangre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net462"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net462": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net462": {
+          "dependencies": {
+            "Microsoft.PowerApps.MSBuild.Pcf": {
+              "target": "Package",
+              "version": "[1.*, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}

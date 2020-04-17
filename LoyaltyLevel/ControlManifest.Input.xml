@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="MicrosoftSamples" constructor="LoyaltyLevel" version="1.0.17" display-name-key="LoyaltyLevel" description-key="LoyaltyLevel description" control-type="standard">
+  <control namespace="MicrosoftSamples" constructor="LoyaltyLevel" version="1.0.18" display-name-key="LoyaltyLevel" description-key="LoyaltyLevel description" control-type="standard">
     <property name="loyaltyLevel" display-name-key="Member Loyalty Level" description-key="Member's level of loyalty: Platinum, Gold, Silver, or Bronze" of-type="OptionSet" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1"/>
