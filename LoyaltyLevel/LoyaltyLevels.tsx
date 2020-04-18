@@ -94,7 +94,8 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
 
 }
 
-export interface ImageProps {
+/* The below exports are for future expansion of the project; they can be ignored at the moment */
+/* export interface ImageProps {
     name: string;
     src: string;
 }
@@ -116,4 +117,4 @@ export class LoyaltyOption extends React.Component<OptionProps, {}>{
             <td><input id={this.props.name} name="level" type="radio" value={this.props.value} />{this.props.name}</td>
         )
     }
-}
+} */
