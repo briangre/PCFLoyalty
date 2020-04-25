@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="MicrosoftSamples" constructor="LoyaltyLevel" version="1.0.18" display-name-key="LoyaltyLevel" description-key="LoyaltyLevel description" control-type="standard">
-    <property name="loyaltyLevel" display-name-key="Member Loyalty Level" description-key="Member's level of loyalty: Platinum, Gold, Silver, or Bronze" of-type="OptionSet" usage="bound" required="true" />
+  <control namespace="Sample" constructor="LoyaltyLevel" version="2.0.0" display-name-key="LoyaltyLevel" description-key="Loyalty Level Badge" control-type="standard">
+    <property name="loyaltyLevel" display-name-key="Member Loyalty Level" 
+              description-key="Member's level of loyalty: Platinum, Gold, Silver, or Bronze" of-type="OptionSet" 
+              usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1"/>
-      <img path="images/green_icon.png" />
-      <img path="images/red_icon.png" />
-      <img path="images/amber_icon.png" />
-      <img path="images/no_selection_icon.png" />
-      <!-- <code path="js/LoyaltyLevel.js" order="1" /> -->
-      <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/LoyaltyLevel.css" order="1" />
-      <resx path="strings/LoyaltyLevel.1033.resx" version="1.0.0" />
-      -->
+      <img path="images/bronze_badge.png" />
+      <img path="images/silver_badge.png" />
+      <img path="images/gold_badge.png" />
+      <img path="images/platinum_badge.png" />
+      <img path="images/no_member_badge.png" />
     </resources>    
   </control>
 </manifest>

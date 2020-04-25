@@ -6,56 +6,62 @@ export interface ILoyaltyProps {
     currentValue?: number | null;
     allOptions?: ComponentFramework.PropertyHelper.OptionMetadata[];
     optionValueChanged?: (newValue: number) => void;
-    // optionValueChanged?: ()=> void;
     _context?: ComponentFramework.Context<IInputs>
 }
 
 export interface ILoyaltyState extends React.ComponentState, ILoyaltyProps {
-    imageUrl?: string
+    currentOption?: number;
+    imageUrl: string
 }
 
 export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
-    // export class Loyalty extends React.Component<ILoyaltyProps, {}> {
 
-    constructor(props:ILoyaltyProps){
+    constructor(props: ILoyaltyProps) {
         super(props);
+
         this.state = {
             value: Number(props.currentValue),
-            imageUrl:''
+            imageUrl: ''
         };
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    private _imageUrl: string | undefined;
+    handleClick = (event: React.MouseEvent): void => {
 
-    
-    render() {        
+        let target = event.target as HTMLImageElement;
+        console.log(target.id);
+
+    }
+
+
+    render() {
 
         let fileName: string;
-        switch (Number(this.props.currentValue)) {
-            case 355350000:
-                fileName = "green_icon.png";
+        const badge = <div></div>;
+        
+        for(let i=0; i< this.props.allOptions!.length;i++){
+            if(this.props.allOptions![i].Value == this.props.currentValue){
+                fileName = this.props.allOptions![i].Label + '_badge.png';
                 break;
-            case 355350001:
-                fileName = "amber_icon.png";
-                break;
-            case 355350002:
-                fileName = "red_icon.png";
-                break;
-            default:
-                fileName = "no_selection_icon.png";
+            }
         }
 
-        // console.log("calling getResource");
+        if(fileName = ''){
+            fileName = 'no_member_badge.png'
+        }
+
         if(this.props._context){
             this.props._context.resources.getResource(fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
         }
-        // console.log("after getResource");
 
         return (
+            
+
             <div>
-                <h1>{this.props.currentValue}</h1>
-                {/* <img src={this._imageUrl} /> */}
-                <img src={this.state.imageUrl} />
+                <h1>{this.props.currentValue}
+                    <img src={this.state.imageUrl}></img>
+                </h1>
             </div>
         );
     }
@@ -65,25 +71,16 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
         fileType: string,
         fileContent: string
     ): void {
-        // console.log("entering setImage");
-        this.setState({imageUrl: this.generateImageSrcUrl(fileType, fileContent)});
-        
-        // this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
+        this.setState({ imageUrl: this.generateImageSrcUrl(fileType, fileContent) });
 
-        // below was just a lame attempt at forcing a call to notifyOutput()
-/*         if(this.props.optionValueChanged){
-            this.props.optionValueChanged();
-        };
- */        
-        if(shouldUpdateOutput){
-            if(this.props.optionValueChanged){
+        if (shouldUpdateOutput) {
+            if (this.props.optionValueChanged) {
                 this.props.optionValueChanged(Number(this.props.currentValue));
             };
         }
     }
 
     private generateImageSrcUrl(fileType: string, fileContent: string): string {
-        // console.log("entering generateImageSrcUrl");
         return "data:image/" + fileType + ";base64, " + fileContent;
     }
 

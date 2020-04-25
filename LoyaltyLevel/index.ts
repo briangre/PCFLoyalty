@@ -10,7 +10,6 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	private _context: ComponentFramework.Context<IInputs>;
 	
 	private props: ILoyaltyProps = {
-		// optionValueChanged: this.optionValueChanged.bind(this),
 		optionValueChanged: this.optionValueChanged.bind(this),
 		_context: this._context
 	};
@@ -34,7 +33,6 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 		this._context = context;
 		this._container = container;
 		this._notifyOutputChanged = notifyOutputChanged;
-		// this._notifyOutputChanged();
 	}
 
 
@@ -44,11 +42,9 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
-		this._context = context;
 		this.props = {
 			currentValue:context.parameters.loyaltyLevel.raw,
-			allOptions:context.parameters.loyaltyLevel.attributes!.Options,
-			_context:this._context
+			allOptions:context.parameters.loyaltyLevel.attributes!.Options
 		};		
 		
 		ReactDOM.render(
@@ -57,14 +53,6 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 		)
 			
 	}
-
-	private optionValueChanged(newValue: number): void{
-		// if(this.props.currentValue !== newValue){
-			// this.props.currentValue = newValue;
-			this._notifyOutputChanged();
-		// }
-	}
-			
 
 	/** 
 	 * It is called by the framework prior to a control receiving new data. 
@@ -76,6 +64,17 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 			loyaltyLevel: Number(this.props.currentValue)
 		};
 	}
+	
+	private optionValueChanged(newValue: number): void
+	{		
+		if(this.props.currentValue !== newValue){
+			this.props.currentValue = newValue;
+			this._notifyOutputChanged();
+		}
+	}
+			
+
+	
 
 	/** 
 	 * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.
