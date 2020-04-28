@@ -1,34 +1,34 @@
-﻿  Restore completed in 39.3 ms for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\PowerAppsTools_bgsample\PowerAppsTools_bgsample.cdsproj.
-  Restore completed in 39.38 ms for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\PCFLoyaltyLevels.pcfproj.
+﻿  Restore completed in 37.31 ms for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\PowerAppsTools_bgsample\PowerAppsTools_bgsample.cdsproj.
+  Restore completed in 36.7 ms for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\PCFLoyaltyLevels.pcfproj.
   
   > pcf-project@1.0.0 clean C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty
   > pcf-scripts clean "--noColor" "--buildMode" "development" "--outDir" "C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
   
-  [18:53:45] [clean]  Initializing...
-  [18:53:45] [clean]  Cleaning build outputs...
-  [18:53:45] [clean]  Succeeded
+  [15:19:55] [clean]  Initializing...
+  [15:19:55] [clean]  Cleaning build outputs...
+  [15:19:55] [clean]  Succeeded
   Cleaning output directory: bin\Debug\, Intermediate directory: obj\Debug\ and Solution Packager working directory: obj\Debug\
   Removing log file: bin\Debug\SolutionPackager.log and generated solution package: bin\Debug\PowerAppsTools_bgsample.zip
   
   > pcf-project@1.0.0 build C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty
   > pcf-scripts build "--noColor" "--buildMode" "development" "--outDir" "C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
   
-  [18:53:48] [build]  Initializing...
-  [18:53:48] [build]  Validating manifest...
-  [18:53:48] [build]  Validating control...
-  [18:53:49] [build]  Generating manifest types...
-  [18:53:49] [build]  Compiling and bundling control...
+  [15:19:58] [build]  Initializing...
+  [15:19:58] [build]  Validating manifest...
+  [15:19:58] [build]  Validating control...
+  [15:19:59] [build]  Generating manifest types...
+  [15:19:59] [build]  Compiling and bundling control...
   [BABEL] Note: The code generator has deoptimised the styling of C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\node_modules\react-dom\cjs\react-dom.development.js as it exceeds the max of 500KB.
   [Webpack stats]:
-  Hash: e8cd56bba46345be8b57
+  Hash: fc04f53d44344250f00a
   Version: webpack 4.28.4
-  Time: 2799ms
-  Built at: 04/24/2020 6:53:52 PM
+  Time: 2952ms
+  Built at: 04/28/2020 3:20:02 PM
       Asset     Size  Chunks             Chunk Names
   bundle.js  786 KiB    main  [emitted]  main
   Entrypoint main = bundle.js
-  [./LoyaltyLevel/LoyaltyLevels.tsx] 3.21 KiB {main} [built]
-  [./LoyaltyLevel/index.ts] 3.16 KiB {main} [built]
+  [./LoyaltyLevel/LoyaltyLevels.tsx] 3.41 KiB {main} [built]
+  [./LoyaltyLevel/index.ts] 3.19 KiB {main} [built]
   [./node_modules/object-assign/index.js] 2.17 KiB {main} [built]
   [./node_modules/prop-types/checkPropTypes.js] 3.57 KiB {main} [built]
   [./node_modules/prop-types/lib/ReactPropTypesSecret.js] 311 bytes {main} [built]
@@ -41,8 +41,8 @@
   [./node_modules/scheduler/index.js] 197 bytes {main} [built]
   [./node_modules/scheduler/tracing.js] 213 bytes {main} [built]
   [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 475 bytes {main} [built]
-  [18:53:52] [build]  Generating build outputs...
-  [18:53:52] [build]  Succeeded
+  [15:20:2] [build]  Generating build outputs...
+  [15:20:2] [build]  Succeeded
   Running Solution Packager to build package type: Unmanaged bin\Debug\PowerAppsTools_bgsample.zip
   SolutionPackger CRM Solution Packaging Tool [Version 9.1.0.44]
   c 2017 Microsoft Corporation.  All rights reserved

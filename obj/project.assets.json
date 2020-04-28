@@ -9,33 +9,6 @@
           "build/Microsoft.PowerApps.MSBuild.Pcf.targets": {}
         }
       }
-    },
-    ".NETFramework,Version=v4.6.2/win": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
-          "build/Microsoft.PowerApps.MSBuild.Pcf.targets": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.6.2/win-x64": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
-          "build/Microsoft.PowerApps.MSBuild.Pcf.targets": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.6.2/win-x86": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
-          "build/Microsoft.PowerApps.MSBuild.Pcf.targets": {}
-        }
-      }
     }
   },
   "libraries": {
@@ -66,11 +39,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj",
+      "projectUniqueName": "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj",
       "projectName": "PCFLoyaltyLevels",
-      "projectPath": "C:\\users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj",
+      "projectPath": "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\PCFLoyaltyLevels.pcfproj",
       "packagesPath": "C:\\Users\\briangre\\.nuget\\packages\\",
-      "outputPath": "C:\\users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\obj\\",
+      "outputPath": "C:\\Users\\briangre\\source\\GIT_Loyalty\\PCFLoyalty\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\briangre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -97,17 +70,6 @@
             "version": "[1.*, )"
           }
         }
-      }
-    },
-    "runtimes": {
-      "win": {
-        "#import": []
-      },
-      "win-x64": {
-        "#import": []
-      },
-      "win-x86": {
-        "#import": []
       }
     }
   }

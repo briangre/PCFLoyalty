@@ -32,7 +32,8 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	{
 		this._context = context;
 		this._container = container;
-		this._notifyOutputChanged = notifyOutputChanged;
+		this._notifyOutputChanged = notifyOutputChanged;		
+		
 	}
 
 
@@ -44,7 +45,8 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	{
 		this.props = {
 			currentValue:context.parameters.loyaltyLevel.raw,
-			allOptions:context.parameters.loyaltyLevel.attributes!.Options
+			allOptions:context.parameters.loyaltyLevel.attributes!.Options,
+			_context:context
 		};		
 		
 		ReactDOM.render(

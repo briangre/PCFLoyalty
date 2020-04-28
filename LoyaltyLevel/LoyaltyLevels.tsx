@@ -27,6 +27,8 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    private _imageUrl: string;
+
     handleClick = (event: React.MouseEvent): void => {
 
         let target = event.target as HTMLImageElement;
@@ -34,44 +36,14 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
 
     }
 
-
-    render() {
-
-        let fileName: string;
-        const badge = <div></div>;
-        
-        for(let i=0; i< this.props.allOptions!.length;i++){
-            if(this.props.allOptions![i].Value == this.props.currentValue){
-                fileName = this.props.allOptions![i].Label + '_badge.png';
-                break;
-            }
-        }
-
-        if(fileName = ''){
-            fileName = 'no_member_badge.png'
-        }
-
-        if(this.props._context){
-            this.props._context.resources.getResource(fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
-        }
-
-        return (
-            
-
-            <div>
-                <h1>{this.props.currentValue}
-                    <img src={this.state.imageUrl}></img>
-                </h1>
-            </div>
-        );
-    }
-
-    private setImage(
+private setImage(
         shouldUpdateOutput: boolean,
         fileType: string,
         fileContent: string
     ): void {
-        this.setState({ imageUrl: this.generateImageSrcUrl(fileType, fileContent) });
+        this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
+        // this.setState({ imageUrl: this.generateImageSrcUrl(fileType, fileContent) });
+        this.setState({ imageUrl: this._imageUrl });
 
         if (shouldUpdateOutput) {
             if (this.props.optionValueChanged) {
@@ -88,6 +60,37 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
         console.log("an error occurred attempting to getResource() showError");
         return;
     }
+    componentDidMount(){
+        let fileName: string;
+        const badge = <div></div>;
+
+        for (let i = 0; i < this.props.allOptions!.length; i++) {
+            if (this.props.allOptions![i].Value == this.props.currentValue) {
+                fileName = this.props.allOptions![i].Label + '_badge.png';
+                break;
+            }
+        }
+
+        if (fileName = '') {
+            fileName = 'no_member_badge.png'
+        } else {
+            if (this.props._context) {
+                this.props._context.resources.getResource(fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
+            }
+        }
+    }
+    render() {
+        return (
+
+            <div>
+                <h1>{this.props.currentValue}</h1>
+                    <img src={this.state.imageUrl}></img>
+                
+            </div>
+        );
+    }
+
+    
 
 }
 
