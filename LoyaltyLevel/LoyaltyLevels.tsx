@@ -1,5 +1,6 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from 'react';
+import { LoyaltyLevel } from ".";
 
 
 export interface ILoyaltyProps {
@@ -11,6 +12,7 @@ export interface ILoyaltyProps {
 
 export interface ILoyaltyState extends React.ComponentState, ILoyaltyProps {
     currentOption?: number;
+    fileName?: string;
     imageUrl: string
 }
 
@@ -21,6 +23,7 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
 
         this.state = {
             value: Number(props.currentValue),
+            fileName: '',
             imageUrl: ''
         };
 
@@ -28,6 +31,7 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
     }
 
     private _imageUrl: string;
+    private _fileName: string;
 
     handleClick = (event: React.MouseEvent): void => {
 
@@ -36,11 +40,12 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
 
     }
 
-private setImage(
+    private setImage(
         shouldUpdateOutput: boolean,
         fileType: string,
         fileContent: string
     ): void {
+        console.log(fileType.toString());
         this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
         // this.setState({ imageUrl: this.generateImageSrcUrl(fileType, fileContent) });
         this.setState({ imageUrl: this._imageUrl });
@@ -60,54 +65,70 @@ private setImage(
         console.log("an error occurred attempting to getResource() showError");
         return;
     }
-    componentDidMount(){
-        let fileName: string;
-        const badge = <div></div>;
+
+    /* componentDidMount() {
+
+        // this.setState(this.state);
+        const badges = [];
 
         for (let i = 0; i < this.props.allOptions!.length; i++) {
+
             if (this.props.allOptions![i].Value == this.props.currentValue) {
-                fileName = this.props.allOptions![i].Label + '_badge.png';
+                this._fileName = this.props.allOptions![i].Label.toLowerCase() + '_badge.png';
                 break;
             }
         }
 
-        if (fileName = '') {
-            fileName = 'no_member_badge.png'
-        } else {
+        if (this.props._context) {
+            console.log('calling getResource; filename = ' + this._fileName);
+            this.props._context.resources.getResource(this._fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
+        }
+    } */
+
+    renderImage(){
+        for (let i = 0; i < this.props.allOptions!.length; i++){
             if (this.props._context) {
-                this.props._context.resources.getResource(fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
+                this._fileName = this.props.allOptions![i].Label + '_badge.png';
+                console.log('calling getResource; filename = ' + this._fileName);
+                this.props._context.resources.getResource(this._fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
             }
+            return(
+                <td><LoyaltyImage src={this.state.imageUrl} class='selected' /></td>
+            )
         }
     }
+
     render() {
         return (
 
             <div>
                 <h1>{this.props.currentValue}</h1>
-                    <img src={this.state.imageUrl}></img>
-                
+                <tr>                    
+                    {this.renderImage()}
+                    {/* <LoyaltyImage class='selected' name={this.props.currentValue?.toString()} src={this.state.imageUrl} /> */}
+                </tr>
+                <div>{this._fileName}</div>
             </div>
         );
     }
-
-    
-
 }
 
-/* The below exports are for future expansion of the project; they can be ignored at the moment */
-/* export interface ImageProps {
-    name: string;
+export interface ImageProps {
+    name?: string;
     src: string;
+    class: string
 }
-export class LoyaltyImage extends React.Component<ImageProps, {}>{
+
+export class LoyaltyImage extends React.Component<ImageProps>{
+
     render() {
         return (
-            <td><img src={this.props.src} id={this.props.name} /></td>
+            <td><img src={this.props.src} className={this.props.class} /></td>
         )
     }
 }
 
-export interface OptionProps {
+/* export interface OptionProps {
     name: string;
     value: number;
 }
