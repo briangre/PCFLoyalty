@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <manifest>
-  <control namespace="Sample" constructor="LoyaltyLevel" version="2.0.20" display-name-key="LoyaltyLevel_Display_Key" description-key="LoyaltyLevel_Desc_Key" control-type="standard" api-version="1.2.1">
+  <control namespace="Sample" constructor="LoyaltyLevel" version="2.0.27" display-name-key="LoyaltyLevel_Display_Key" description-key="LoyaltyLevel_Desc_Key" control-type="standard" api-version="1.2.1">
     <property name="loyaltyLevel" display-name-key="loyaltyLevel_Display_Key" description-key="loyaltyLevel_Desc_Key" of-type="OptionSet" usage="bound" required="true"/>
     <resources>
       <code path="bundle.js" order="1"/>

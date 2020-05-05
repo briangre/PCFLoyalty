@@ -31,7 +31,8 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
     }
 
     private _imageUrl: string;
-    private _fileName: string;
+    private _counter: number = 0;
+    private _elemArray: JSX.Element[] = [];
 
     handleClick = (event: React.MouseEvent): void => {
 
@@ -47,8 +48,9 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
     ): void {
         console.log(fileType.toString());
         this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
-        // this.setState({ imageUrl: this.generateImageSrcUrl(fileType, fileContent) });
-        this.setState({ imageUrl: this._imageUrl });
+        //this._elemArray.push(<LoyaltyImage src={this._imageUrl} class='selected' />);
+        this._elemArray.push(<td><img src={this._imageUrl} className='selected' /></td>);
+        this._counter++;
 
         if (shouldUpdateOutput) {
             if (this.props.optionValueChanged) {
@@ -85,17 +87,24 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
         }
     } */
 
-    renderImage(){
-        for (let i = 0; i < this.props.allOptions!.length; i++){
+    renderImage() {
+
+        const elemArray: JSX.Element[] = [];
+
+        for (let i = 0; i < this.props.allOptions!.length; i++) {
             if (this.props._context) {
-                this._fileName = this.props.allOptions![i].Label + '_badge.png';
-                console.log('calling getResource; filename = ' + this._fileName);
-                this.props._context.resources.getResource(this._fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
+                let fileName: string = this.props.allOptions![i].Label.toLowerCase() + '_badge.png';
+                console.log('calling getResource; filename = ' + fileName);
+                this.props._context.resources.getResource(fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
             }
-            return(
-                <td><LoyaltyImage src={this.state.imageUrl} class='selected' /></td>
-            )
         }
+
+        /* while(this._counter < this.props.allOptions!.length){
+            
+        } */
+        return(            
+            this._elemArray
+        )
     }
 
     render() {
@@ -103,11 +112,14 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
 
             <div>
                 <h1>{this.props.currentValue}</h1>
-                <tr>                    
-                    {this.renderImage()}
-                    {/* <LoyaltyImage class='selected' name={this.props.currentValue?.toString()} src={this.state.imageUrl} /> */}
-                </tr>
-                <div>{this._fileName}</div>
+                <table>
+                    <tbody>
+                        <tr>
+                            {this.renderImage()}
+                            {/* <LoyaltyImage class='selected' name={this.props.currentValue?.toString()} src={this.state.imageUrl} /> */}
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         );
     }
