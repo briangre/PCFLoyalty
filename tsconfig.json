@@ -2,6 +2,10 @@
     "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
     "compilerOptions": {
         "typeRoots": ["node_modules/@types"],
-        "jsx": "react"
-    }
+        "jsx": "react",
+        "noImplicitAny": false       
+    },
+    "exclude": [
+        "backups"
+    ]
 }

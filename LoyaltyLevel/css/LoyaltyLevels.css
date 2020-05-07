@@ -1,0 +1,8 @@
+img {
+    opacity:0.2;
+    height: 75px;
+}
+
+img.Selected {
+    opacity: 1;
+}

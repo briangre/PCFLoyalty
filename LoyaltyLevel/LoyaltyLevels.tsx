@@ -1,153 +1,127 @@
-import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import * as React from 'react';
-import { LoyaltyLevel } from ".";
-
+import { IInputs } from "./generated/ManifestTypes";
+import * as React from "react";
 
 export interface ILoyaltyProps {
-    currentValue?: number | null;
-    allOptions?: ComponentFramework.PropertyHelper.OptionMetadata[];
-    optionValueChanged?: (newValue: number) => void;
-    _context?: ComponentFramework.Context<IInputs>
+  currentValue?: number | null;
+  allOptions?: ComponentFramework.PropertyHelper.OptionMetadata[];
+  optionValueChanged?: (newValue: number) => void;
+  _context?: ComponentFramework.Context<IInputs>;
 }
 
 export interface ILoyaltyState extends React.ComponentState, ILoyaltyProps {
-    currentOption?: number;
-    fileName?: string;
-    imageUrl: string
+  currentOption?: number;
 }
 
 export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
+  constructor(props: ILoyaltyProps) {
+    super(props);
 
-    constructor(props: ILoyaltyProps) {
-        super(props);
+    this.state = {
+      imageUrls: [],
+      optionInfo: [{}]
+    };
+  }
 
-        this.state = {
-            value: Number(props.currentValue),
-            fileName: '',
-            imageUrl: ''
-        };
+  componentDidMount = () => {
+    this.updateImages();
+  };
 
-        this.handleClick = this.handleClick.bind(this);
+  componentWillUpdate = (nextProps, nextState) => {
+    // whenever the allOptions change, update images and re-render
+    if (nextState.allOptions !== this.state.allOptions) {
+      this.updateImages();
     }
+  };
 
-    private _imageUrl: string;
-    private _counter: number = 0;
-    private _elemArray: JSX.Element[] = [];
+  updateImages = async () => {
+    const imageUrls = await this.getImages();
+    const optionInfo = await this.getImages();
 
-    handleClick = (event: React.MouseEvent): void => {
+    this.setState({
+      imageUrls,
+      optionInfo
+    });
+  };
 
-        let target = event.target as HTMLImageElement;
-        console.log(target.id);
+  handleClick = (event: React.MouseEvent): void => {
+    const target = event.target as HTMLImageElement;
 
-    }
+    console.log(target.id);
+  };
 
-    private setImage(
-        shouldUpdateOutput: boolean,
-        fileType: string,
-        fileContent: string
-    ): void {
-        console.log(fileType.toString());
-        this._imageUrl = this.generateImageSrcUrl(fileType, fileContent);
-        //this._elemArray.push(<LoyaltyImage src={this._imageUrl} class='selected' />);
-        this._elemArray.push(<td><img src={this._imageUrl} className='selected' /></td>);
-        this._counter++;
+  private showError(error): void {
+    console.log(
+      "an error occurred attempting to getResource() showError",
+      error
+    );
+    return;
+  }
 
-        if (shouldUpdateOutput) {
-            if (this.props.optionValueChanged) {
-                this.props.optionValueChanged(Number(this.props.currentValue));
-            };
+  /**
+   * Turns the callback-based method into one returning a promise
+   * The caller could then simply async..await for file content
+   */
+  getResourceAsync = (fileName: string): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      this.props._context?.resources.getResource(fileName, resolve, reject);
+    });
+  };
+
+  async getImages() {
+    const { _context, allOptions } = this.props;
+    const contextAvailable = !!_context;
+    const numberOfOptions = allOptions!.length;
+    const optionsAvailable = !!numberOfOptions;
+    const elemArray: string[] = [];
+
+    if (contextAvailable && optionsAvailable) {
+      for (let i = 0; i < numberOfOptions; i++) {
+        const fileName: string =
+          allOptions![i].Label.toLowerCase() + "_medal_1.png";
+
+        try {
+          const fileContent = await this.getResourceAsync(fileName);
+          const imageUrl = "data:image/png;base64, " + fileContent;
+
+          //const objInfo = JSON.parse('{"value":"' + allOptions![i].Value.toString() + '","url":' + imageUrl + '}');
+          const objInfo = '{"value":"' + allOptions![i].Value.toString() + '","url":"' + imageUrl + '"}';
+
+          //elemArray.push(imageUrl);
+          elemArray.push(objInfo)
+        } catch (error) {
+          this.showError(error);
         }
+      }
     }
 
-    private generateImageSrcUrl(fileType: string, fileContent: string): string {
-        return "data:image/" + fileType + ";base64, " + fileContent;
-    }
+    return elemArray;
+  }
 
-    private showError(): void {
-        console.log("an error occurred attempting to getResource() showError");
-        return;
-    }
+  render() {
+    /* const { currentValue, imageUrls } = this.state;
+     const images = imageUrls.map((imageUrl: string) => (
+      <td>
+        <img src={imageUrl} id={info.value} className={info.value == currentValue ? "Selected" : "notSelected"} />
+      </td>
+    ));
+ */
+    const { currentValue, optionInfo } = this.state;
+    const images = optionInfo.map((info) => (
+        <td>
+        <img src={JSON.parse(info).url} id={JSON.parse(info).value} className={JSON.parse(info).value == currentValue ? "Selected" : "notSelected"} />
+      </td>
+    ));
 
-    /* componentDidMount() {
 
-        // this.setState(this.state);
-        const badges = [];
-
-        for (let i = 0; i < this.props.allOptions!.length; i++) {
-
-            if (this.props.allOptions![i].Value == this.props.currentValue) {
-                this._fileName = this.props.allOptions![i].Label.toLowerCase() + '_badge.png';
-                break;
-            }
-        }
-
-        if (this.props._context) {
-            console.log('calling getResource; filename = ' + this._fileName);
-            this.props._context.resources.getResource(this._fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
-        }
-    } */
-
-    renderImage() {
-
-        const elemArray: JSX.Element[] = [];
-
-        for (let i = 0; i < this.props.allOptions!.length; i++) {
-            if (this.props._context) {
-                let fileName: string = this.props.allOptions![i].Label.toLowerCase() + '_badge.png';
-                console.log('calling getResource; filename = ' + fileName);
-                this.props._context.resources.getResource(fileName, this.setImage.bind(this, false, "png"), this.showError.bind(this));
-            }
-        }
-
-        /* while(this._counter < this.props.allOptions!.length){
-            
-        } */
-        return(            
-            this._elemArray
-        )
-    }
-
-    render() {
-        return (
-
-            <div>
-                <h1>{this.props.currentValue}</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            {this.renderImage()}
-                            {/* <LoyaltyImage class='selected' name={this.props.currentValue?.toString()} src={this.state.imageUrl} /> */}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
+    return (
+      <div>
+        <h1>{this.state.currentValue}</h1>
+        <table>
+          <tbody>
+            <tr>{images}</tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
-
-export interface ImageProps {
-    name?: string;
-    src: string;
-    class: string
-}
-
-export class LoyaltyImage extends React.Component<ImageProps>{
-
-    render() {
-        return (
-            <td><img src={this.props.src} className={this.props.class} /></td>
-        )
-    }
-}
-
-/* export interface OptionProps {
-    name: string;
-    value: number;
-}
-export class LoyaltyOption extends React.Component<OptionProps, {}>{
-    render() {
-        return (
-            <td><input id={this.props.name} name="level" type="radio" value={this.props.value} />{this.props.name}</td>
-        )
-    }
-} */
