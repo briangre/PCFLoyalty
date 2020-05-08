@@ -1,1 +1,3 @@
 C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\Debug\PCFLoyaltyLevels.pcfprojAssemblyReference.cache
+C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\obj\Debug\PCFLoyaltyLevels.pcfprojAssemblyReference.cache
+C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\obj\Debug\PCFLoyaltyLevels.pcfproj.CoreCompileInputs.cache

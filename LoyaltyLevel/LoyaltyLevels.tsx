@@ -17,8 +17,7 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
     super(props);
 
     this.state = {
-      imageUrls: [],
-      optionInfo: [{}]
+      optionInfo: []
     };
   }
 
@@ -34,19 +33,25 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
   };
 
   updateImages = async () => {
-    const imageUrls = await this.getImages();
     const optionInfo = await this.getImages();
 
     this.setState({
-      imageUrls,
       optionInfo
     });
   };
 
   handleClick = (event: React.MouseEvent): void => {
     const target = event.target as HTMLImageElement;
-
     console.log(target.id);
+
+    if(target.id !== this.props.currentValue?.toString()){
+      this.setState({
+          currentValue: Number(target.id)
+      });
+      if(this.props.optionValueChanged){
+        this.props.optionValueChanged(Number(this.state.currentValue));
+      }
+    }
   };
 
   private showError(error): void {
@@ -83,10 +88,8 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
           const fileContent = await this.getResourceAsync(fileName);
           const imageUrl = "data:image/png;base64, " + fileContent;
 
-          //const objInfo = JSON.parse('{"value":"' + allOptions![i].Value.toString() + '","url":' + imageUrl + '}');
           const objInfo = '{"value":"' + allOptions![i].Value.toString() + '","url":"' + imageUrl + '"}';
 
-          //elemArray.push(imageUrl);
           elemArray.push(objInfo)
         } catch (error) {
           this.showError(error);
@@ -98,27 +101,22 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
   }
 
   render() {
-    /* const { currentValue, imageUrls } = this.state;
-     const images = imageUrls.map((imageUrl: string) => (
-      <td>
-        <img src={imageUrl} id={info.value} className={info.value == currentValue ? "Selected" : "notSelected"} />
-      </td>
-    ));
- */
     const { currentValue, optionInfo } = this.state;
-    const images = optionInfo.map((info) => (
-        <td>
-        <img src={JSON.parse(info).url} id={JSON.parse(info).value} className={JSON.parse(info).value == currentValue ? "Selected" : "notSelected"} />
+    const options = optionInfo.map((info) => (
+      <td>
+        <img src={JSON.parse(info).url} id={JSON.parse(info).value} 
+          className={JSON.parse(info).value == this.props.currentValue ? "Selected" : "notSelected"} 
+          onClick={this.handleClick} />
       </td>
     ));
 
 
     return (
       <div>
-        <h1>{this.state.currentValue}</h1>
+        <h1>{currentValue}</h1>
         <table>
           <tbody>
-            <tr>{images}</tr>
+            <tr>{options}</tr>
           </tbody>
         </table>
       </div>

@@ -14,7 +14,6 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 		_context: this._context
 	};
 
-
 	constructor()
 	{
 
@@ -32,10 +31,8 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	{
 		this._context = context;
 		this._container = container;
-		this._notifyOutputChanged = notifyOutputChanged;		
-		
+		this._notifyOutputChanged = notifyOutputChanged;			
 	}
-
 
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
@@ -52,8 +49,7 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 		ReactDOM.render(
 			React.createElement(Loyalty, this.props),
 			this._container
-		)
-			
+		)			
 	}
 
 	/** 
@@ -73,10 +69,7 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 			this.props.currentValue = newValue;
 			this._notifyOutputChanged();
 		}
-	}
-			
-
-	
+	}	
 
 	/** 
 	 * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.

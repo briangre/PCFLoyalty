@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Sample" constructor="LoyaltyLevel" version="2.0.40" display-name-key="LoyaltyLevel_Display_Key" description-key="LoyaltyLevel_Desc_Key" control-type="standard">
+  <control namespace="Sample" constructor="LoyaltyLevel" version="2.0.46" display-name-key="LoyaltyLevel_Display_Key" description-key="LoyaltyLevel_Desc_Key" control-type="standard">
     <property name="loyaltyLevel" display-name-key="loyaltyLevel_Display_Key" 
               description-key="loyaltyLevel_Desc_Key" of-type="OptionSet" 
               usage="bound" required="true" />

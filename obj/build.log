@@ -1,33 +1,33 @@
-﻿  Restore completed in 45.59 ms for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\PCFLoyaltyLevels.pcfproj.
-  Restore completed in 45.59 ms for C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\PowerAppsTools_bgsample\PowerAppsTools_bgsample.cdsproj.
+﻿  Restore completed in 151.77 ms for C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\PCFLoyaltyLevels.pcfproj.
+  Restore completed in 152.13 ms for C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\obj\PowerAppsTools_bgsample\PowerAppsTools_bgsample.cdsproj.
   
-  > pcf-project@1.0.0 clean C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty
-  > pcf-scripts clean "--noColor" "--buildMode" "development" "--outDir" "C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
+  > pcf-project@1.0.0 clean C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty
+  > pcf-scripts clean "--noColor" "--buildMode" "development" "--outDir" "C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
   
-  [18:44:8] [clean]  Initializing...
-  [18:44:8] [clean]  Cleaning build outputs...
-  [18:44:8] [clean]  Succeeded
+  [21:18:28] [clean]  Initializing...
+  [21:18:28] [clean]  Cleaning build outputs...
+  [21:18:28] [clean]  Succeeded
   Cleaning output directory: bin\Debug\, Intermediate directory: obj\Debug\ and Solution Packager working directory: obj\Debug\
   Removing log file: bin\Debug\SolutionPackager.log and generated solution package: bin\Debug\PowerAppsTools_bgsample.zip
   
-  > pcf-project@1.0.0 build C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty
-  > pcf-scripts build "--noColor" "--buildMode" "development" "--outDir" "C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
+  > pcf-project@1.0.0 build C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty
+  > pcf-scripts build "--noColor" "--buildMode" "development" "--outDir" "C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\out\controls" "--buildSource" "MSBuild"
   
-  [18:44:11] [build]  Initializing...
-  [18:44:11] [build]  Validating manifest...
-  [18:44:11] [build]  Validating control...
-  [18:44:12] [build]  Generating manifest types...
-  [18:44:12] [build]  Compiling and bundling control...
-  [BABEL] Note: The code generator has deoptimised the styling of C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\node_modules\react-dom\cjs\react-dom.development.js as it exceeds the max of 500KB.
+  [21:18:38] [build]  Initializing...
+  [21:18:38] [build]  Validating manifest...
+  [21:18:38] [build]  Validating control...
+  [21:18:44] [build]  Generating manifest types...
+  [21:18:44] [build]  Compiling and bundling control...
+  [BABEL] Note: The code generator has deoptimised the styling of C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\node_modules\react-dom\cjs\react-dom.development.js as it exceeds the max of 500KB.
   [Webpack stats]:
-  Hash: cb4248ff81f6532c282e
-  Version: webpack 4.28.4
-  Time: 3584ms
-  Built at: 05/07/2020 6:44:16 PM
+  Hash: 6527a9b97ed8d7d45858
+  Version: webpack 4.42.1
+  Time: 20789ms
+  Built at: 05/07/2020 9:19:05 PM
       Asset     Size  Chunks             Chunk Names
   bundle.js  791 KiB    main  [emitted]  main
   Entrypoint main = bundle.js
-  [./LoyaltyLevel/LoyaltyLevels.tsx] 8.24 KiB {main} [built]
+  [./LoyaltyLevel/LoyaltyLevels.tsx] 8.14 KiB {main} [built]
   [./LoyaltyLevel/index.ts] 3.19 KiB {main} [built]
   [./node_modules/object-assign/index.js] 2.17 KiB {main} [built]
   [./node_modules/prop-types/checkPropTypes.js] 3.57 KiB {main} [built]
@@ -41,14 +41,14 @@
   [./node_modules/scheduler/index.js] 197 bytes {main} [built]
   [./node_modules/scheduler/tracing.js] 213 bytes {main} [built]
   [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 475 bytes {main} [built]
-  [18:44:16] [build]  Generating build outputs...
-  [18:44:16] [build]  Succeeded
+  [21:19:5] [build]  Generating build outputs...
+  [21:19:5] [build]  Succeeded
   Running Solution Packager to build package type: Unmanaged bin\Debug\PowerAppsTools_bgsample.zip
   SolutionPackger CRM Solution Packaging Tool [Version 9.1.0.44]
   c 2017 Microsoft Corporation.  All rights reserved
   
   
-  Packing C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\obj\PowerAppsTools_bgsample\obj\Debug\Metadata to bin\Debug\PowerAppsTools_bgsample.zip
+  Packing C:\Users\brian\Documents\Source\LoyaltyRewards\PCFLoyalty\obj\PowerAppsTools_bgsample\obj\Debug\Metadata to bin\Debug\PowerAppsTools_bgsample.zip
   
   Processing Component: Entities
   Processing Component: Roles
