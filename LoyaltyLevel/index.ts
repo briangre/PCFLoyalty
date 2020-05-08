@@ -40,11 +40,9 @@ export class LoyaltyLevel implements ComponentFramework.StandardControl<IInputs,
 	 */
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
-		this.props = {
-			currentValue:context.parameters.loyaltyLevel.raw,
-			allOptions:context.parameters.loyaltyLevel.attributes!.Options,
-			_context:context
-		};		
+		this.props.currentValue = context.parameters.loyaltyLevel.raw;
+		this.props.allOptions = context.parameters.loyaltyLevel.attributes!.Options;
+		this.props._context = context;
 		
 		ReactDOM.render(
 			React.createElement(Loyalty, this.props),

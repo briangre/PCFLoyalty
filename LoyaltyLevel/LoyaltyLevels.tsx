@@ -17,8 +17,11 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
     super(props);
 
     this.state = {
-      optionInfo: []
+      optionInfo: [],
+      currentOption: Number(this.props.currentValue)
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount = () => {
@@ -44,12 +47,12 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
     const target = event.target as HTMLImageElement;
     console.log(target.id);
 
-    if(target.id !== this.props.currentValue?.toString()){
+    if(target.id !== this.state.currentOption?.toString()){
       this.setState({
-          currentValue: Number(target.id)
+          currentOption: Number(target.id)
       });
       if(this.props.optionValueChanged){
-        this.props.optionValueChanged(Number(this.state.currentValue));
+        this.props.optionValueChanged(Number(target.id));
       }
     }
   };
@@ -101,19 +104,17 @@ export class Loyalty extends React.Component<ILoyaltyProps, ILoyaltyState> {
   }
 
   render() {
-    const { currentValue, optionInfo } = this.state;
+    const { currentOption, optionInfo } = this.state;
     const options = optionInfo.map((info) => (
       <td>
         <img src={JSON.parse(info).url} id={JSON.parse(info).value} 
-          className={JSON.parse(info).value == this.props.currentValue ? "Selected" : "notSelected"} 
-          onClick={this.handleClick} />
+          className={"reward " + (JSON.parse(info).value == currentOption ? "Selected" : "notSelected")} onClick={this.handleClick}/>
       </td>
     ));
 
 
     return (
       <div>
-        <h1>{currentValue}</h1>
         <table>
           <tbody>
             <tr>{options}</tr>
