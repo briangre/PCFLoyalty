@@ -1,0 +1,19 @@
+2020-07-28 15:43:37.983 - Info	
+Packing C:\Users\briangre\source\GIT_Loyalty\PCFLoyalty\LoyaltyLevel\LoyaltySolution\obj\Release\Metadata to bin\Release\LoyaltySolution.zip
+
+2020-07-28 15:43:38.015 - Info	Processing Component: Entities
+2020-07-28 15:43:38.018 - Info	Processing Component: Roles
+2020-07-28 15:43:38.022 - Info	Processing Component: Workflows
+2020-07-28 15:43:38.023 - Info	Processing Component: FieldSecurityProfiles
+2020-07-28 15:43:38.023 - Info	Processing Component: Templates
+2020-07-28 15:43:38.024 - Info	Processing Component: EntityMaps
+2020-07-28 15:43:38.024 - Info	Processing Component: EntityRelationships
+2020-07-28 15:43:38.042 - Info	Processing Component: OrganizationSettings
+2020-07-28 15:43:38.043 - Info	Processing Component: optionsets
+2020-07-28 15:43:38.043 - Info	Processing Component: CustomControls
+2020-07-28 15:43:38.081 - Info	 - Sample.LoyaltyLevel
+2020-07-28 15:43:38.217 - Info	Processing Component: SolutionPluginAssemblies
+2020-07-28 15:43:38.219 - Info	Processing Component: EntityDataProviders
+2020-07-28 15:43:38.294 - Info	
+Managed Pack complete.
+
