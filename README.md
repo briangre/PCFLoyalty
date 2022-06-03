@@ -7,6 +7,9 @@ with images representing each level.
 The control will dim the non-selected levels and allow the user to change the current 
 level by clicking on the new, desired level.
 
+You will find both a managed and unmanaged solution package in the LoyaltySolution/bin
+folder. Debug contains the unmanaged solution and Release contains the managed solution.
+
 The images used in this control are believed to be public domain, but can be replaced 
 with other images as desired.
 
